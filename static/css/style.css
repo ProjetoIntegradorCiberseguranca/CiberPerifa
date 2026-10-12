@@ -44,7 +44,7 @@ nav ul a[aria-current="page"]{color:var(--text);background:var(--surface2)}
 .car-ctrl{display:flex;gap:.5rem}
 .car-ctrl button{width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:1.2rem;cursor:pointer;transition:border-color .2s,color .2s}
 .car-ctrl button:hover{border-color:var(--accent);color:var(--accent)}
-.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-bottom: 32px;}
 .track::-webkit-scrollbar{display:none}
 .card{flex:0 0 calc((100% - 2rem)/3);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .25s}
 .card:hover{border-color:var(--accent-d)}

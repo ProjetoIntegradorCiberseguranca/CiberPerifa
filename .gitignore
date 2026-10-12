@@ -1,0 +1,24 @@
+
+# Ambiente virtual do Python
+.venv/
+venv/
+
+# Arquivos temporários do Python
+__pycache__/
+*.py[cod]
+
+# Variáveis de ambiente e possíveis segredos
+.env
+.env.*
+!.env.example
+
+# Arquivos temporários e de testes
+.pytest_cache/
+.coverage
+
+# Relatório PDF gerado localmente
+relatorio_ciberperifa.pdf
+
+# Arquivos do Windows e macOS
+Thumbs.db
+.DS_Store
