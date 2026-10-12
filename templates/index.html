@@ -49,45 +49,68 @@
           </div>
         </div>
 
-        <!-- Os valores abaixo são exemplos: confira e atualize com os dados do seu script Python -->
-        <div class="track" id="track" tabindex="0" aria-label="Dados sobre ciberseguran&ccedil;a">
-          <article class="card"><strong>US$ 4,88 mi</strong>
-            <p>Custo médio global de uma violação de dados em 2024.</p><small>Fonte: IBM, Cost of a Data Breach
-              2024</small>
-          </article>
-          <article class="card"><strong>68%</strong>
-            <p>das violações envolveram o fator humano, como erro ou engenharia social.</p><small>Fonte: Verizon DBIR
-              2024</small>
-          </article>
-          <article class="card"><strong>US$ 12,5 bi</strong>
-            <p>em perdas por crimes online reportados ao FBI em 2023.</p><small>Fonte: FBI IC3, Relatório 2023</small>
-          </article>
-          <article class="card"><strong>Dado 4</strong>
-            <p>Substitua por um dado brasileiro (ex.: CERT.br ou ANPD).</p><small>Fonte: a definir</small>
-          </article>
-          <article class="card"><strong>Dado 5</strong>
-            <p>Substitua por outro dado relevante para o público.</p><small>Fonte: a definir</small>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section id="cartilha" style="padding-top:0">
-      <div class="wrap">
-        <div class="download">
-          <div>
-            <h2>Cartilha de conscientização</h2>
-            <p>Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes que
-              reunimos.</p>
+        <div class="track" id="track" tabindex="0" aria-label="Dados sobre cibersegurança">
+
+          <article class="card">
+            <strong>US$ 4,44 milhões</strong>
+            <p>Custo médio global de uma violação de dados em 2025.</p>
+            <small>
+              Fonte:
+              <a href="https://www.ibm.com/think/x-force/2025-cost-of-a-data-breach-navigating-ai" target="_blank"
+                rel="noopener noreferrer">IBM, relatório de 2025</a>
+            </small>
+          </article>
+
+          <article class="card">
+            <strong>60%</strong>
+            <p>Das violações analisadas envolveram um elemento humano, como ações ou erros de pessoas.</p>
+            <small>
+              Fonte:
+              <a href="https://www.verizon.com/business/resources/reports/2025-dbir-data-breach-investigations-report.pdf"
+                target="_blank" rel="noopener noreferrer">Verizon DBIR 2025</a>
+            </small>
+          </article>
+
+          <article class="card">
+            <strong>US$ 16 bilhões+</strong>
+            <p>Em perdas reportadas por crimes na internet nos Estados Unidos em 2024.</p>
+            <small>
+              Fonte:
+              <a href="https://www.fbi.gov/news/press-releases/fbi-releases-annual-internet-crime-report"
+                target="_blank" rel="noopener noreferrer">FBI IC3, relatório de 2024</a>
+            </small>
+          </article>
+
+          <article class="card">
+            <strong>Dados do Brasil</strong>
+            <p>Consulte estatísticas nacionais de incidentes de segurança e tentativas de fraude.</p>
+            <small>
+              Fonte:
+              <a href="https://stats.cert.br/" target="_blank" rel="noopener noreferrer">CERT.br</a>
+            </small>
+          </article>
+
+        </div>
+
+
+        <section id="cartilha" style="padding-top:0">
+          <div class="wrap">
+            <div class="download">
+              <div>
+                <h2>Cartilha de conscientização</h2>
+                <p>Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes
+                  que
+                  reunimos.</p>
+              </div>
+
+              <a class="btn" href="{{ url_for('baixar_pdf') }}">
+                Baixar PDF
+              </a>
+
+            </div>
           </div>
-
-          <a class="btn" href="{{ url_for('baixar_pdf') }}">
-            Baixar PDF
-          </a>
-
-        </div>
-      </div>
-    </section>
+        </section>
   </main>
 
   <footer>
