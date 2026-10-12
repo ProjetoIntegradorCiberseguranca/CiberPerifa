@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CiberPerifa | Home</title>
-  <meta name="description" content="Dados confiáveis sobre ciberseguran&ccedil;a e uma cartilha de conscientiza&ccedil;&atilde;o para baixar.">
+  <meta name="description"
+    content="Dados confiáveis sobre ciberseguran&ccedil;a e uma cartilha de conscientiza&ccedil;&atilde;o para baixar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
   <header>
     <nav class="wrap" aria-label="Principal">
       <a class="brand" href="index.html"><i></i><span>CiberPerifa</span></a>
       <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="sobre.html">Sobre o Projeto</a></li>
+        <li><a href="{{ url_for('inicio') }}" aria-current="page">Home</a></li>
+        <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
       </ul>
     </nav>
   </header>
@@ -25,7 +30,8 @@
     <section class="hero">
       <div class="wrap">
         <h1>Proteger seus dados começa por entender o risco.</h1>
-        <p>Hoje, quase tudo o que fazemos passa pela internet: banco, trabalho, estudos, conversas. Conhecer o básico de segurança digital é a forma mais simples de evitar golpes, vazamentos e prejuízos.</p>
+        <p>Hoje, quase tudo o que fazemos passa pela internet: banco, trabalho, estudos, conversas. Conhecer o básico de
+          segurança digital é a forma mais simples de evitar golpes, vazamentos e prejuízos.</p>
         <a class="btn" href="#cartilha">Baixar a cartilha</a>
       </div>
     </section>
@@ -45,11 +51,23 @@
 
         <!-- Os valores abaixo são exemplos: confira e atualize com os dados do seu script Python -->
         <div class="track" id="track" tabindex="0" aria-label="Dados sobre ciberseguran&ccedil;a">
-          <article class="card"><strong>US$ 4,88 mi</strong><p>Custo médio global de uma violação de dados em 2024.</p><small>Fonte: IBM, Cost of a Data Breach 2024</small></article>
-          <article class="card"><strong>68%</strong><p>das violações envolveram o fator humano, como erro ou engenharia social.</p><small>Fonte: Verizon DBIR 2024</small></article>
-          <article class="card"><strong>US$ 12,5 bi</strong><p>em perdas por crimes online reportados ao FBI em 2023.</p><small>Fonte: FBI IC3, Relatório 2023</small></article>
-          <article class="card"><strong>Dado 4</strong><p>Substitua por um dado brasileiro (ex.: CERT.br ou ANPD).</p><small>Fonte: a definir</small></article>
-          <article class="card"><strong>Dado 5</strong><p>Substitua por outro dado relevante para o público.</p><small>Fonte: a definir</small></article>
+          <article class="card"><strong>US$ 4,88 mi</strong>
+            <p>Custo médio global de uma violação de dados em 2024.</p><small>Fonte: IBM, Cost of a Data Breach
+              2024</small>
+          </article>
+          <article class="card"><strong>68%</strong>
+            <p>das violações envolveram o fator humano, como erro ou engenharia social.</p><small>Fonte: Verizon DBIR
+              2024</small>
+          </article>
+          <article class="card"><strong>US$ 12,5 bi</strong>
+            <p>em perdas por crimes online reportados ao FBI em 2023.</p><small>Fonte: FBI IC3, Relatório 2023</small>
+          </article>
+          <article class="card"><strong>Dado 4</strong>
+            <p>Substitua por um dado brasileiro (ex.: CERT.br ou ANPD).</p><small>Fonte: a definir</small>
+          </article>
+          <article class="card"><strong>Dado 5</strong>
+            <p>Substitua por outro dado relevante para o público.</p><small>Fonte: a definir</small>
+          </article>
         </div>
       </div>
     </section>
@@ -59,9 +77,14 @@
         <div class="download">
           <div>
             <h2>Cartilha de conscientização</h2>
-            <p>Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes que reunimos.</p>
+            <p>Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes que
+              reunimos.</p>
           </div>
-          <a class="btn" href="cartilha-ciberseguranca.pdf" download>Baixar PDF</a>
+
+          <a class="btn" href="{{ url_for('baixar_pdf') }}">
+            Baixar PDF
+          </a>
+
         </div>
       </div>
     </section>
@@ -72,13 +95,14 @@
       <div class="foot">
         <div>
           <h3>CiberPerifa</h3>
-          <p>Projeto acadêmico que reúne dados confiáveis e atualizados periodicamente para ajudar as pessoas a entender a importância da segurança digital.</p>
+          <p>Projeto acadêmico que reúne dados confiáveis e atualizados periodicamente para ajudar as pessoas a entender
+            a importância da segurança digital.</p>
         </div>
         <div>
           <h3>Navegação</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre o Projeto</a></li>
+            <li><a href="{{ url_for('inicio') }}">Início</li>
+            <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
             <li><a href="#cartilha">Baixar cartilha</a></li>
           </ul>
         </div>
@@ -87,9 +111,11 @@
           <p>Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p>
         </div>
       </div>
-      <p class="copy">&copy; <span id="ano"></span> CiberPerifa. Projeto sem fins lucrativos, feito para fins educacionais.</p>
+      <p class="copy">&copy; <span id="ano"></span> CiberPerifa. Projeto sem fins lucrativos, feito para fins
+        educacionais.</p>
     </div>
   </footer>
-  <script src="../static/js/script.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
