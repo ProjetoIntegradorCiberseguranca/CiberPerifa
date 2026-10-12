@@ -51,6 +51,142 @@ def desenhar_rodape(pdf, documento):
     pdf.restoreState()
 
 
+
+def explicar_vulnerabilidade(vulnerabilidade):
+    descricao = vulnerabilidade.get(
+        "shortDescription", ""
+    ).lower()
+
+    # 1. Exposição de informações sensíveis
+    if (
+        "cleartext storage of sensitive information" in descricao
+        or "sensitive user details" in descricao
+    ):
+        explicacao = (
+            "Essa falha pode permitir que informações pessoais ou "
+            "outros dados sensíveis sejam descobertos por pessoas "
+            "que tenham acesso ao sistema afetado. A descrição da "
+            "CISA também informa que essa falha pode ser combinada "
+            "com outra vulnerabilidade para possibilitar a execução "
+            "remota de código."
+        )
+        return explicacao
+
+    # 2. Controle de acesso inadequado
+    if "improper access control" in descricao:
+        return (
+            "Essa falha pode permitir que alguém realize operações "
+            "sem as restrições de acesso esperadas. Neste caso, "
+            "a descrição informa que invasores remotos podem ler "
+            "e modificar arquivos que deveriam estar protegidos."
+        )
+
+    # 3. Acesso indevido a caminhos de arquivos
+    if "path traversal" in descricao or "directory traversal" in descricao:
+        explicacao = (
+            "Essa falha pode permitir que alguém manipule caminhos "
+            "de arquivos para acessar locais que deveriam estar "
+            "fora do alcance da operação solicitada."
+        )
+
+        if "remote code execution" in descricao:
+            explicacao += (
+                " A descrição também informa que essa falha pode "
+                "possibilitar a execução remota de código."
+            )
+
+        return explicacao
+
+    # 4. Injeção de comandos
+    if "command injection" in descricao:
+        return (
+            "Essa falha pode permitir que entradas manipuladas "
+            "provoquem a execução de comandos não previstos. "
+            "Dependendo das condições do ataque, isso pode permitir "
+            "a execução de código no sistema afetado."
+        )
+
+    # 5. Indisponibilidade do serviço
+    if "denial of service" in descricao:
+        return (
+            "Essa falha pode comprometer a disponibilidade do "
+            "sistema, fazendo com que ele pare de responder ou "
+            "fique indisponível para seus usuários."
+        )
+
+    # 6. Elevação de privilégios
+    if (
+        "privilege escalation" in descricao
+        or "elevation of privilege" in descricao
+    ):
+        return (
+            "Essa falha pode permitir que alguém obtenha permissões "
+            "maiores do que deveria ter, acessando funções ou "
+            "recursos restritos."
+        )
+
+    # 7. Contorno da autenticação
+    if (
+        "authentication bypass" in descricao
+        or "bypass authentication" in descricao
+    ):
+        return (
+            "Essa falha pode permitir que alguém contorne uma "
+            "verificação de identidade e acesse recursos sem "
+            "passar pelo mecanismo de autenticação esperado."
+        )
+
+    # 8. Injeção de SQL
+    if "sql injection" in descricao:
+        return (
+            "Essa falha pode permitir que entradas manipuladas "
+            "alterem consultas ao banco de dados, podendo expor "
+            "ou modificar informações conforme as permissões "
+            "e condições do sistema."
+        )
+
+    # 9. Execução de scripts no navegador
+    if (
+        "cross-site scripting" in descricao
+        or "xss vulnerability" in descricao
+    ):
+        return (
+            "Essa falha pode permitir a execução de scripts "
+            "maliciosos no navegador de quem acessa uma página "
+            "afetada, podendo comprometer dados ou a interação "
+            "com o site."
+        )
+
+    # 10. Problemas de memória
+    if "buffer overflow" in descricao:
+        return (
+            "Essa falha ocorre quando um programa manipula dados "
+            "além dos limites previstos para uma área de memória. "
+            "Isso pode causar erros e, dependendo do caso, "
+            "comprometer a segurança do sistema."
+        )
+
+    # 11. Execução remota de código, quando não há categoria
+    # mais específica reconhecida anteriormente
+    if "remote code execution" in descricao:
+        return (
+            "Essa falha pode permitir que um invasor execute "
+            "código no sistema afetado a partir de outro dispositivo. "
+            "O impacto depende das condições do ataque e das "
+            "permissões disponíveis."
+        )
+
+    # 12. Alternativa segura para descrições não reconhecidas
+    return (
+        "A CISA identificou uma vulnerabilidade neste produto. "
+        "O impacto específico depende dos detalhes da falha e "
+        "das condições em que ela pode ser explorada. Consulte "
+        "a descrição original e a ação recomendada pela CISA "
+        "para mais informações."
+    )
+
+
+
 def gerar_pdf(vulnerabilidades):
     arquivo = BytesIO()
 
@@ -308,12 +444,30 @@ def gerar_pdf(vulnerabilidades):
         conteudo.append(Paragraph(
             f"<b>Data de inclusão no catálogo:</b> {data}", texto
         ))
+        
         conteudo.append(Paragraph(
-            f"<b>Descrição original:</b> {descricao}", texto
+            f"<b>Descrição original (CISA):</b> {descricao}",
+            texto
+        ))
+
+        explicacao = escape(
+            explicar_vulnerabilidade(vulnerabilidade)
+        )
+
+        conteudo.append(Paragraph(
+            "<b>O que isso significa?</b>",
+            texto
         ))
         conteudo.append(Paragraph(
-            f"<b>Ação recomendada original:</b> {acao}", texto
+            explicacao,
+            texto
         ))
+
+        conteudo.append(Paragraph(
+            f"<b>Ação recomendada original (CISA):</b> {acao}",
+            texto
+        ))
+
 
     conteudo.append(Paragraph(
         "Fonte oficial: <link href='https://www.cisa.gov/known-exploited-vulnerabilities-catalog'>"
