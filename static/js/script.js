@@ -1,3 +1,21 @@
+// Alternância de tema (claro/escuro)
+const btnTema = document.getElementById('theme-toggle');
+if (btnTema) {
+  const raiz = document.documentElement;
+  const rotular = (tema) => {
+    btnTema.setAttribute('aria-label', tema === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro');
+    btnTema.setAttribute('title', tema === 'light' ? 'Modo escuro' : 'Modo claro');
+  };
+  rotular(raiz.getAttribute('data-theme') || 'dark');
+
+  btnTema.addEventListener('click', () => {
+    const novo = raiz.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    raiz.setAttribute('data-theme', novo);
+    rotular(novo);
+    try { localStorage.setItem('tema', novo); } catch (e) { /* ignora */ }
+  });
+}
+
 // Ano automático no rodapé
 document.getElementById('ano').textContent = new Date().getFullYear();
 

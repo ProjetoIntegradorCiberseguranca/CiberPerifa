@@ -4,6 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    /* Aplica o tema salvo antes da página aparecer (evita piscar) */
+    try {
+      var t = localStorage.getItem('tema');
+      if (!t) { t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  </script>
   <title>CiberPerifa | Home</title>
   <meta name="description"
     content="Dados confiáveis sobre ciberseguran&ccedil;a e uma cartilha de conscientiza&ccedil;&atilde;o para baixar.">
@@ -23,6 +31,10 @@
         <li><a href="{{ url_for('inicio') }}" aria-current="page">Home</a></li>
         <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
       </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo claro" title="Alternar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
     </nav>
   </header>
 
@@ -118,20 +130,20 @@
       <div class="foot">
         <div>
           <h3>CiberPerifa</h3>
-          <p>Projeto acadêmico que reúne dados confiáveis e atualizados periodicamente para ajudar as pessoas a entender
-            a importância da segurança digital.</p>
+          <p>Projeto acadêmico que reúne dados confiáveis para conscientizar sobre a importância da segurança
+            digital.</p>
         </div>
         <div>
           <h3>Navegação</h3>
           <ul>
-            <li><a href="{{ url_for('inicio') }}">Início</li>
+            <li><a href="{{ url_for('inicio') }}">Início</a></li>
             <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
             <li><a href="#cartilha">Baixar cartilha</a></li>
           </ul>
         </div>
         <div>
           <h3>Instituição</h3>
-          <p>Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p>
+          <a href="https://www.fatecsp.br/"><p>Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p></a>
         </div>
       </div>
       <p class="copy">&copy; <span id="ano"></span> CiberPerifa. Projeto sem fins lucrativos, feito para fins
