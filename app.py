@@ -31,22 +31,16 @@ def desenhar_rodape(pdf, documento):
 
     largura, altura = A4
 
-    # Faixa decorativa superior
-    pdf.setFillColor(colors.HexColor("#4527A0"))
-    pdf.rect(0, altura - 8, largura, 8, fill=1, stroke=0)
-
-    # Identificação e número da página
-    pdf.setStrokeColor(colors.HexColor("#D1C4E9"))
-    pdf.line(2 * cm, 1.6 * cm, largura - 2 * cm, 1.6 * cm)
-
-    pdf.setFont("Helvetica", 8)
-    pdf.setFillColor(colors.HexColor("#555555"))
-    pdf.drawString(2 * cm, 1.1 * cm, "CiberPerifa | Cartilha educativa")
-    pdf.drawRightString(
-        largura - 2 * cm,
-        1.1 * cm,
-        f"Página {documento.page}"
-    )
+    # Numeração simples no canto superior direito.
+    # A capa é contada, mas não exibe o número.
+    if documento.page > 1:
+        pdf.setFont("Times-Roman", 10)
+        pdf.setFillColor(colors.black)
+        pdf.drawRightString(
+            largura - 2 * cm,
+            altura - 2 * cm,
+            str(documento.page)
+        )
 
     pdf.restoreState()
 
@@ -191,64 +185,115 @@ def gerar_pdf(vulnerabilidades):
     arquivo = BytesIO()
 
     documento = SimpleDocTemplate(
-        arquivo,
-        pagesize=A4,
-        rightMargin=2 * cm,
-        leftMargin=2 * cm,
-        topMargin=2 * cm,
-        bottomMargin=2 * cm,
-        title="Cartilha de Cibersegurança - CiberPerifa",
-        author="CiberPerifa"
+    arquivo,
+    pagesize=A4,
+    rightMargin=2 * cm,
+    leftMargin=3 * cm,
+    topMargin=3 * cm,
+    bottomMargin=2 * cm,
+    title="Cartilha de Cibersegurança - CiberPerifa",
+    author="CiberPerifa"
     )
 
     estilos = getSampleStyleSheet()
 
+    # Título principal da capa
     titulo = ParagraphStyle(
         "TituloCartilha",
         parent=estilos["Title"],
-        fontSize=21,
-        leading=26,
+        fontName="Times-Bold",
+        fontSize=16,
+        leading=20,
         alignment=1,
-        spaceAfter=16,
-        textColor=colors.HexColor("#4527A0"),
+        textColor=colors.black,
+        spaceAfter=18
     )
 
+    # Subtítulo da capa
     subtitulo = ParagraphStyle(
         "SubtituloCartilha",
         parent=estilos["Normal"],
-        fontSize=11,
-        leading=16,
+        fontName="Times-Roman",
+        fontSize=12,
+        leading=18,
         alignment=1,
-        spaceAfter=20,
-        textColor=colors.HexColor("#6A1B9A"),
+        textColor=colors.black,
+        spaceAfter=18
     )
 
+    # Títulos das seções
     secao = ParagraphStyle(
         "SecaoCartilha",
         parent=estilos["Heading2"],
-        fontSize=14,
+        fontName="Times-Bold",
+        fontSize=12,
         leading=18,
-        spaceBefore=14,
-        spaceAfter=8,
-        textColor=colors.HexColor("#4527A0"),
+        alignment=0,
+        textColor=colors.black,
+        spaceBefore=18,
+        spaceAfter=9,
+        keepWithNext=True
     )
 
+    # Texto principal
     texto = ParagraphStyle(
         "TextoCartilha",
         parent=estilos["BodyText"],
-        fontSize=10,
-        leading=15,
-        spaceAfter=8
+        fontName="Times-Roman",
+        fontSize=12,
+        leading=18,
+        alignment=4,
+        textColor=colors.black,
+        spaceAfter=9,
+        firstLineIndent=1.25 * cm
     )
 
-    destaque = ParagraphStyle(
-        "DestaqueCartilha",
+    # Texto sem recuo para informações e metadados
+    texto_sem_recuo = ParagraphStyle(
+        "TextoSemRecuo",
         parent=texto,
-        leftIndent=12,
-        rightIndent=12,
-        spaceBefore=5,
-        spaceAfter=12
+        firstLineIndent=0
     )
+
+    # Listas com marcadores
+    texto_lista = ParagraphStyle(
+        "TextoLista",
+        parent=texto,
+        firstLineIndent=0,
+        leftIndent=0.7 * cm,
+        bulletIndent=0.2 * cm,
+        spaceAfter=6
+    )
+
+    # Destaque simples na capa, sem cor
+    destaque = ParagraphStyle(
+    "DestaqueCartilha",
+    parent=estilos["Normal"],
+    fontName="Times-Roman",
+    fontSize=12,
+    leading=18,
+    alignment=1,
+    textColor=colors.black,
+    firstLineIndent=0,
+    leftIndent=0,
+    rightIndent=0,
+    spaceBefore=5,
+    spaceAfter=12
+    )
+
+    texto_capa = ParagraphStyle(
+    "TextoCapa",
+    parent=estilos["Normal"],
+    fontName="Times-Roman",
+    fontSize=12,
+    leading=18,
+    alignment=1,
+    textColor=colors.black,
+    firstLineIndent=0,
+    leftIndent=0,
+    rightIndent=0,
+    spaceAfter=12
+)
 
     conteudo = []
 
@@ -263,7 +308,7 @@ def gerar_pdf(vulnerabilidades):
     conteudo.append(Paragraph(
         "Aprenda a reconhecer ameaças, proteger suas contas "
         "e navegar com mais segurança na internet.",
-        texto
+        texto_capa
     ))
 
     conteudo.append(Spacer(1, 2 * cm))
@@ -275,7 +320,7 @@ def gerar_pdf(vulnerabilidades):
     conteudo.append(Paragraph(
         "Material educativo para ajudar pessoas a desenvolver "
         "hábitos mais seguros no ambiente digital.",
-        texto
+        texto_capa
     ))
 
     conteudo.append(Spacer(1, 2 * cm))
@@ -325,7 +370,7 @@ def gerar_pdf(vulnerabilidades):
 
     for dica in dicas_phishing:
         conteudo.append(Paragraph(
-            escape(dica), texto, bulletText="•"
+            escape(dica), texto_lista, bulletText="•"
         ))
 
     conteudo.append(Paragraph(
@@ -343,7 +388,7 @@ def gerar_pdf(vulnerabilidades):
 
     for dica in dicas_contas:
         conteudo.append(Paragraph(
-            escape(dica), texto, bulletText="•"
+            escape(dica), texto_lista, bulletText="•"
         ))
 
     conteudo.append(Paragraph(
@@ -361,7 +406,7 @@ def gerar_pdf(vulnerabilidades):
 
     for dica in dicas_dispositivos:
         conteudo.append(Paragraph(
-            escape(dica), texto, bulletText="•"
+            escape(dica), texto_lista, bulletText="•"
         ))
 
     conteudo.append(Paragraph(
@@ -436,18 +481,18 @@ def gerar_pdf(vulnerabilidades):
 
         conteudo.append(Paragraph(f"CVE: {cve}", secao))
         conteudo.append(Paragraph(
-            f"<b>Fornecedor:</b> {fornecedor}", texto
+            f"<b>Fornecedor:</b> {fornecedor}", texto_sem_recuo
         ))
         conteudo.append(Paragraph(
-            f"<b>Produto:</b> {produto}", texto
+            f"<b>Produto:</b> {produto}", texto_sem_recuo
         ))
         conteudo.append(Paragraph(
-            f"<b>Data de inclusão no catálogo:</b> {data}", texto
+            f"<b>Data de inclusão no catálogo:</b> {data}", texto_sem_recuo
         ))
         
         conteudo.append(Paragraph(
             f"<b>Descrição original (CISA):</b> {descricao}",
-            texto
+            texto_sem_recuo
         ))
 
         explicacao = escape(
