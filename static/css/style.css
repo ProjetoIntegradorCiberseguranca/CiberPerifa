@@ -10,13 +10,27 @@
 }
 
 /* ===== Tema claro ===== */
-:root[data-theme="light"]{
-  --bg:#f5f8fb; --surface:#ffffff; --surface2:#eaf0f6; --line:#d9e2ec;
-  --text:#0e1a2b; --muted:#566579; --accent:#0b7285; --accent-d:#3aa0b3;
-  --on-accent:#ffffff; --accent-hover:#095b6a;
-  --header-bg:rgba(245,248,251,.85);
-  --glow:rgba(11,114,133,.14); --glow2:rgba(11,114,133,.10);
-  --grid-op:.8; --shadow:0 1px 3px rgba(14,26,43,.06);
+:root[data-theme="light"] {
+    --bg: #d3e4f3;
+    --surface: #e0e9f1;
+    --surface2: #dce6ef;
+    --line: #c5d2df;
+
+    --text: #172b3f;
+    --muted: #53677c;
+
+    --accent: #286b8a;
+    --accent-d: #4b8ba8;
+    --on-accent: #ffffff;
+    --accent-hover: #1e536e;
+
+    --header-bg: rgba(232, 238, 244, .92);
+
+    --glow: rgba(40, 107, 138, .13);
+    --glow2: rgba(40, 107, 138, .08);
+
+    --grid-op: .55;
+    --shadow: 0 2px 5px rgba(23, 43, 63, .08);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -82,6 +96,14 @@ nav ul a[aria-current="page"]{color:var(--text);background:var(--surface2)}
 .download::before{content:"";position:absolute;left:-80px;bottom:-120px;width:320px;height:320px;background:radial-gradient(circle,var(--glow2),transparent 65%)}
 .download>*{position:relative}
 .download p{color:var(--muted);max-width:48ch}
+
+/* Estilização da imagem da empresa parceira */
+.partner-logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 
 /* Sobre */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.75rem}
