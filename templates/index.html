@@ -13,7 +13,7 @@
     } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   </script>
   <title>CiberPerifa | Home</title>
-  <meta name="description"
+  <meta name="description" data-i18n-attr="content:meta_desc"
     content="Dados confiáveis sobre ciberseguran&ccedil;a e uma cartilha de conscientiza&ccedil;&atilde;o para baixar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,12 +25,13 @@
 
 <body>
   <header>
-    <nav class="wrap" aria-label="Principal">
+    <nav class="wrap" aria-label="Principal" data-i18n-attr="aria-label:nav_aria">
       <a class="brand" href="index.html"><i></i><span>CiberPerifa</span></a>
       <ul>
         <li><a href="{{ url_for('inicio') }}" aria-current="page">Home</a></li>
-        <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
+        <li><a href="{{ url_for('sobre') }}" data-i18n="nav_sobre">Sobre o Projeto</a></li>
       </ul>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Mudar o idioma para inglês" title="English"><span>EN</span></button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo claro" title="Alternar tema">
         <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -41,10 +42,10 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <h1>Proteger seus dados começa por entender o risco.</h1>
-        <p>Hoje, quase tudo o que fazemos passa pela internet: banco, trabalho, estudos, conversas. Conhecer o básico de
+        <h1 data-i18n="hero_h1">Proteger seus dados começa por entender o risco.</h1>
+        <p data-i18n="hero_p">Hoje, quase tudo o que fazemos passa pela internet: banco, trabalho, estudos, conversas. Conhecer o básico de
           segurança digital é a forma mais simples de evitar golpes, vazamentos e prejuízos.</p>
-        <a class="btn" href="#cartilha">Baixar a cartilha</a>
+        <a class="btn" href="#cartilha" data-i18n="hero_btn">Baixar a cartilha</a>
       </div>
     </section>
 
@@ -52,53 +53,53 @@
       <div class="wrap">
         <div class="car-head">
           <div>
-            <h2 id="dados-t">Ciberseguran&ccedil;a em números</h2>
-            <p class="lead">Dados de fontes reconhecidas, atualizados periodicamente.</p>
+            <h2 id="dados-t" data-i18n="dados_h2">Ciberseguran&ccedil;a em números</h2>
+            <p class="lead" data-i18n="dados_lead">Dados de fontes reconhecidas, atualizados periodicamente.</p>
           </div>
           <div class="car-ctrl">
-            <button id="prev" aria-label="Cards anteriores">&#8249;</button>
-            <button id="next" aria-label="Próximos cards">&#8250;</button>
+            <button id="prev" aria-label="Cards anteriores" data-i18n-attr="aria-label:prev_aria">&#8249;</button>
+            <button id="next" aria-label="Próximos cards" data-i18n-attr="aria-label:next_aria">&#8250;</button>
           </div>
         </div>
 
 
-        <div class="track" id="track" tabindex="0" aria-label="Dados sobre cibersegurança">
+        <div class="track" id="track" tabindex="0" aria-label="Dados sobre cibersegurança" data-i18n-attr="aria-label:track_aria">
 
           <article class="card">
-            <strong>US$ 4,44 milhões</strong>
-            <p>Custo médio global de uma violação de dados em 2025.</p>
+            <strong data-i18n="c1_n">US$ 4,44 milhões</strong>
+            <p data-i18n="c1_p">Custo médio global de uma violação de dados em 2025.</p>
             <small>
-              Fonte:
+              <span data-i18n="fonte">Fonte:</span>
               <a href="https://www.ibm.com/think/x-force/2025-cost-of-a-data-breach-navigating-ai" target="_blank"
-                rel="noopener noreferrer">IBM, relatório de 2025</a>
+                rel="noopener noreferrer" data-i18n="c1_src">IBM, relatório de 2025</a>
             </small>
           </article>
 
           <article class="card">
             <strong>60%</strong>
-            <p>Das violações analisadas envolveram um elemento humano, como ações ou erros de pessoas.</p>
+            <p data-i18n="c2_p">Das violações analisadas envolveram um elemento humano, como ações ou erros de pessoas.</p>
             <small>
-              Fonte:
+              <span data-i18n="fonte">Fonte:</span>
               <a href="https://www.verizon.com/business/resources/reports/2025-dbir-data-breach-investigations-report.pdf"
                 target="_blank" rel="noopener noreferrer">Verizon DBIR 2025</a>
             </small>
           </article>
 
           <article class="card">
-            <strong>US$ 16 bilhões+</strong>
-            <p>Em perdas reportadas por crimes na internet nos Estados Unidos em 2024.</p>
+            <strong data-i18n="c3_n">US$ 16 bilhões+</strong>
+            <p data-i18n="c3_p">Em perdas reportadas por crimes na internet nos Estados Unidos em 2024.</p>
             <small>
-              Fonte:
+              <span data-i18n="fonte">Fonte:</span>
               <a href="https://www.fbi.gov/news/press-releases/fbi-releases-annual-internet-crime-report"
-                target="_blank" rel="noopener noreferrer">FBI IC3, relatório de 2024</a>
+                target="_blank" rel="noopener noreferrer" data-i18n="c3_src">FBI IC3, relatório de 2024</a>
             </small>
           </article>
 
           <article class="card">
-            <strong>Dados do Brasil</strong>
-            <p>Consulte estatísticas nacionais de incidentes de segurança e tentativas de fraude.</p>
+            <strong data-i18n="c4_n">Dados do Brasil</strong>
+            <p data-i18n="c4_p">Consulte estatísticas nacionais de incidentes de segurança e tentativas de fraude.</p>
             <small>
-              Fonte:
+              <span data-i18n="fonte">Fonte:</span>
               <a href="https://stats.cert.br/" target="_blank" rel="noopener noreferrer">CERT.br</a>
             </small>
           </article>
@@ -110,13 +111,13 @@
           <div class="wrap">
             <div class="download">
               <div>
-                <h2>Cartilha de conscientização</h2>
-                <p>Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes
+                <h2 data-i18n="dl_h2">Cartilha de conscientização</h2>
+                <p data-i18n="dl_p">Um PDF com dados detalhados e orientações práticas. Cada download traz as informações mais recentes
                   que
                   reunimos.</p>
               </div>
 
-              <a class="btn" href="{{ url_for('baixar_pdf') }}">
+              <a class="btn" href="{{ url_for('baixar_pdf') }}" data-i18n="dl_btn">
                 Baixar PDF
               </a>
 
@@ -130,24 +131,24 @@
       <div class="foot">
         <div>
           <h3>CiberPerifa</h3>
-          <p>Projeto acadêmico que reúne dados confiáveis para conscientizar sobre a importância da segurança
+          <p data-i18n="foot_desc">Projeto acadêmico que reúne dados confiáveis para conscientizar sobre a importância da segurança
             digital.</p>
         </div>
         <div>
-          <h3>Navegação</h3>
+          <h3 data-i18n="foot_nav">Navegação</h3>
           <ul>
-            <li><a href="{{ url_for('inicio') }}">Início</a></li>
-            <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</a></li>
-            <li><a href="#cartilha">Baixar cartilha</a></li>
+            <li><a href="{{ url_for('inicio') }}" data-i18n="foot_inicio">Início</a></li>
+            <li><a href="{{ url_for('sobre') }}" data-i18n="nav_sobre">Sobre o Projeto</a></li>
+            <li><a href="#cartilha" data-i18n="foot_baixar">Baixar cartilha</a></li>
           </ul>
         </div>
         <div>
-          <h3>Instituição</h3>
-          <a href="https://www.fatecsp.br/"><p>Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p></a>
+          <h3 data-i18n="foot_inst">Instituição</h3>
+          <a href="https://www.fatecsp.br/"><p data-i18n="foot_fatec">Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p></a>
         </div>
       </div>
-      <p class="copy">&copy; <span id="ano"></span> CiberPerifa. Projeto sem fins lucrativos, feito para fins
-        educacionais.</p>
+      <p class="copy">&copy; <span id="ano"></span> <span data-i18n="copy">CiberPerifa. Projeto sem fins lucrativos, feito para fins
+        educacionais.</span></p>
     </div>
   </footer>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>

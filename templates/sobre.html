@@ -12,7 +12,7 @@
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   </script>
-  <title>CiberPerifa | Sobre o Projeto</title>
+  <title data-i18n="title_sobre">CiberPerifa | Sobre o Projeto</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -24,12 +24,13 @@
 
 <body>
   <header>
-    <nav class="wrap" aria-label="Principal">
+    <nav class="wrap" aria-label="Principal" data-i18n-attr="aria-label:nav_aria">
       <a class="brand" href="index.html"><i></i><span>CiberPerifa</span></a>
       <ul>
         <li><a href="{{ url_for('inicio') }}">Home</a></li>
-        <li><a href="{{ url_for('sobre') }}" aria-current="page">Sobre o Projeto</a></li>
+        <li><a href="{{ url_for('sobre') }}" aria-current="page" data-i18n="nav_sobre">Sobre o Projeto</a></li>
       </ul>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Mudar o idioma para inglês" title="English"><span>EN</span></button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo claro" title="Alternar tema">
         <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -40,19 +41,19 @@
   <main>
     <section class="hero" style="padding:5rem 0 3.5rem">
       <div class="wrap">
-        <h1>Sobre o CiberPerifa</h1>
-        <p>Como a ideia surgiu e com quem fizemos parceria.</p>
+        <h1 data-i18n="s_h1">Sobre o CiberPerifa</h1>
+        <p data-i18n="s_sub">Como a ideia surgiu e com quem fizemos parceria.</p>
       </div>
     </section>
 
     <section style="padding-top:3rem">
       <div class="wrap">
-        <h2>História do projeto</h2>
-        <p class="lead">O CiberPerifa nasceu na disciplina de Projeto Integrador do 1º semestre de Análise e
+        <h2 data-i18n="s_hist_h2">História do projeto</h2>
+        <p class="lead" data-i18n="s_hist_p1">O CiberPerifa nasceu na disciplina de Projeto Integrador do 1º semestre de Análise e
           Desenvolvimento de Sistemas da Fatec. O desafio era criar uma solução ligada a um parceiro real e útil para a
           sociedade. Escolhemos a segurança digital porque queremos ajudar as pessoas a se informarem, com dados de
           fontes confiáveis e em linguagem simples.</p>
-        <p class="lead" style="margin-top:1rem">Os dados da cartilha são atualizados periodicamente, para que quem
+        <p class="lead" style="margin-top:1rem" data-i18n="s_hist_p2">Os dados da cartilha são atualizados periodicamente, para que quem
           baixar o arquivo sempre encontre informações recentes.</p>
       </div>
     </section>
@@ -60,18 +61,19 @@
     <section class="alt">
       <div class="wrap">
 
-        <h2>Nosso parceiro</h2>
+        <h2 data-i18n="s_part_h2">Nosso parceiro</h2>
 
         <div class="partner">
           <img
             src="{{ url_for('static', filename='img/logo-perifa.png') }}"
             alt="Logo da Perifa na Lista"
+            data-i18n-attr="alt:s_logo_alt"
             class="partner-logo"
           >
 
           <div>
             <h3>Perifa na Lista</h3>
-            <p class="lead">
+            <p class="lead" data-i18n="s_part_p">
               Perifa na Lista é um projeto social idealizado por Rick Trindade, no sul da Bahia, que busca democratizar o acesso à cultura, ao lazer e à arte nas periferias brasileiras, atuando de forma voluntária, em parceria com instituições, empresas e agentes culturais comprometidos com a transformação social. O projeto compreende a periferia como um conjunto de vivências historicamente marginalizadas, para além da dimensão física de afastamento de centros urbanos. Neste sentido, o Perifa na Lista possibilita diversas oportunidades de conexão entre as periferias e diferentes experiências enriquecedoras, cultural e artisticamente, promovendo bem-estar, ampliando horizontes e abrindo caminhos para que as comunidades periféricas, coletivamente, ocupem seus espaços de direito na cena cultural brasileira.
             </p>
           </div>
@@ -86,24 +88,24 @@
       <div class="foot">
         <div>
           <h3>CiberPerifa</h3>
-          <p>Projeto acadêmico que reúne dados confiáveis para conscientizar sobre a importância da segurança
+          <p data-i18n="foot_desc">Projeto acadêmico que reúne dados confiáveis para conscientizar sobre a importância da segurança
             digital.</p>
         </div>
         <div>
-          <h3>Navegação</h3>
+          <h3 data-i18n="foot_nav">Navegação</h3>
           <ul>
-            <li><a href="{{ url_for('inicio') }}">Início</a></li>
-            <li><a href="{{ url_for('sobre') }}">Sobre o Projeto</li>
-            <li><a href="{{ url_for('inicio') }}#cartilha">Baixar cartilha</a></li>
+            <li><a href="{{ url_for('inicio') }}" data-i18n="foot_inicio">Início</a></li>
+            <li><a href="{{ url_for('sobre') }}" data-i18n="nav_sobre">Sobre o Projeto</a></li>
+            <li><a href="{{ url_for('inicio') }}#cartilha" data-i18n="foot_baixar">Baixar cartilha</a></li>
           </ul>
         </div>
         <div>
-          <h3>Instituição</h3>
-          <a href="https://www.fatecsp.br/"><p>Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p></a>
+          <h3 data-i18n="foot_inst">Instituição</h3>
+          <a href="https://www.fatecsp.br/"><p data-i18n="foot_fatec">Fatec · Análise e Desenvolvimento de Sistemas<br>Projeto Integrador, 1º semestre</p></a>
         </div>
       </div>
-      <p class="copy">&copy; <span id="ano"></span> CiberPerifa. Projeto sem fins lucrativos, feito para fins
-        educacionais.</p>
+      <p class="copy">&copy; <span id="ano"></span> <span data-i18n="copy">CiberPerifa. Projeto sem fins lucrativos, feito para fins
+        educacionais.</span></p>
     </div>
   </footer>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>

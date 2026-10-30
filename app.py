@@ -325,7 +325,7 @@ def gerar_pdf(vulnerabilidades):
 
     conteudo.append(Spacer(1, 2 * cm))
     conteudo.append(Paragraph(
-        "Conteúdo educativo e consulta a dados públicos da CISA.",
+        "Conteúdo educativo e consulta a dados públicos.",
         subtitulo
     ))
 
@@ -429,7 +429,7 @@ def gerar_pdf(vulnerabilidades):
         ))
 
     conteudo.append(Paragraph(
-        "6. O que são vulnerabilidades e como identificá-las",
+        "6. Mas afinal, o que são vulnerabilidades?",
         secao
     ))
 
@@ -439,7 +439,7 @@ def gerar_pdf(vulnerabilidades):
         "da CISA (Cybersecurity and Infrastructure Security Agency) "
         " - Agência do governo dos Estados Unidos responsável por promover a segurança cibernética, "
         " identificar vulnerabilidades em sistemas e divulgar orientações para ajudar organizações e pessoas a se protegerem contra ameaças digitais - " 
-        " reúne vulnerabilidades com evidências de exploração.",
+        " reúne vulnerabilidades com evidências de exploração, vamos explorar algumas dessas vulnerabilidades no decorrer do arquivo.",
         texto
     ))
 
