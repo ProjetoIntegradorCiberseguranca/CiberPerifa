@@ -439,7 +439,7 @@ def gerar_pdf(vulnerabilidades):
         "da CISA (Cybersecurity and Infrastructure Security Agency) "
         " - Agência do governo dos Estados Unidos responsável por promover a segurança cibernética, "
         " identificar vulnerabilidades em sistemas e divulgar orientações para ajudar organizações e pessoas a se protegerem contra ameaças digitais - " 
-        " reúne vulnerabilidades com evidências de exploração, vamos explorar algumas dessas vulnerabilidades no decorrer do arquivo.",
+        " reúne vulnerabilidades com evidências de exploração, vamos analisar algumas dessas vulnerabilidades no decorrer do arquivo.",
         texto
     ))
 
