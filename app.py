@@ -429,16 +429,17 @@ def gerar_pdf(vulnerabilidades):
         ))
 
     conteudo.append(Paragraph(
-        "6. Vulnerabilidades identificadas pela CISA",
+        "6. O que são vulnerabilidades e como identificá-las",
         secao
     ))
 
     conteudo.append(Paragraph(
         "Uma vulnerabilidade é uma falha em um sistema, programa "
         "ou dispositivo que pode afetar sua segurança. O catálogo "
-        "da CISA reúne vulnerabilidades com evidências de exploração. "
-        "A presença de um registro não significa que todos os "
-        "dispositivos estejam comprometidos.",
+        "da CISA (Cybersecurity and Infrastructure Security Agency) "
+        " - Agência do governo dos Estados Unidos responsável por promover a segurança cibernética, "
+        " identificar vulnerabilidades em sistemas e divulgar orientações para ajudar organizações e pessoas a se protegerem contra ameaças digitais - " 
+        " reúne vulnerabilidades com evidências de exploração.",
         texto
     ))
 

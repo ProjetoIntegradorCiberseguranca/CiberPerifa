@@ -99,7 +99,7 @@ nav ul a[aria-current="page"]{color:var(--text);background:var(--surface2)}
 
 /* Estilização da imagem da empresa parceira */
 .partner-logo {
-    width: 120px;
+    width: 160px;
     height: auto;
     object-fit: contain;
     display: block;
